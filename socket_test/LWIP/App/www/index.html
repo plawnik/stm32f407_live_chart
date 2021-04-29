@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <title>STM32 Server</title>
+
+    <script src="scripts/chart.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.get("data.json", function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+            });
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <div class="mymain">
+        <header class="myheader">
+            <ul class="mynavigation">
+                <li class="pagetitle">Demo page STM32F429 server</a></li>
+                <li><a href="./index.html">Demo page</a></li>
+                <li><a href="./status.html">System status</a></li>
+                <li><a href="./settings.html">Settings</a></li>
+                <li><a href="./description.html">Description</a></li>
+            </ul>
+        </header>
+        <article class="textarticle">
+            <br>
+            <h1 class="myheader">Text</h1>
+            <div class="lipsum">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus placerat mi eu mauris
+                    lacinia,
+                    nec sodales diam vehicula. Nunc risus magna, sodales sed ornare ut, maximus sed arcu. Class
+                    aptent
+                    taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec aliquet
+                    dolor
+                    ac ex ornare, a ornare tellus iaculis. Sed sit amet dignissim diam. Vestibulum pellentesque
+                    feugiat
+                    ex et blandit. Pellentesque leo est, interdum nec tempor vitae, vestibulum et lorem. Duis nec
+                    rutrum
+                    dui.
+                </p>
+                <p>
+                    Aenean non justo nec quam mollis viverra. Ut in pharetra justo. In lacinia mattis luctus. Proin
+                    vel
+                    purus viverra, venenatis metus quis, tristique elit. In gravida commodo efficitur. Vestibulum
+                    dictum
+                    nulla vitae aliquam rhoncus. Vivamus elementum ornare volutpat. Fusce scelerisque diam ac nunc
+                    blandit, ut ullamcorper neque ornare. Fusce vulputate massa vel risus laoreet lobortis.
+                </p>
+                <p>
+                    Maecenas ac tortor ut justo egestas mattis nec non nibh. Duis ultricies maximus commodo. Nunc
+                    volutpat id odio eu cursus. Aliquam sodales, diam quis vulputate elementum, ante tellus cursus
+                    augue, vitae finibus libero urna at urna. Cras sit amet tristique enim, eget ultricies ante.
+                    Nulla
+                    mollis feugiat efficitur. Aenean ut mauris eu eros ultrices hendrerit a ac lorem. Aliquam
+                    sodales
+                    arcu sed efficitur interdum. Sed auctor in odio in euismod. Orci varius natoque penatibus et
+                    magnis
+                    dis parturient montes, nascetur ridiculus mus. In velit dolor, pellentesque eu felis et,
+                    pharetra
+                    luctus urna. Fusce iaculis tristique suscipit.
+                </p>
+                <p>
+                    Quisque facilisis consequat nulla, non semper metus viverra vel. Vestibulum aliquam, odio nec
+                    cursus
+                    euismod, tortor quam ultrices odio, sed tincidunt nunc leo vel sapien. Nam facilisis
+                    pellentesque
+                    mattis. Sed ipsum ex, congue non ultricies vel, tristique et nunc. Duis quis nunc pulvinar,
+                    finibus
+                    purus eu, congue odio. Etiam ac hendrerit metus. Fusce rhoncus nisl nibh, a auctor lacus
+                    venenatis
+                    convallis. Pellentesque ultricies maximus massa eu porta. Vestibulum nunc dui, aliquam sed
+                    placerat
+                    non, mattis nec neque. Nam aliquam augue quis augue tincidunt, nec fringilla odio blandit. Nulla
+                    eget augue nisi. Nulla lectus ipsum, lacinia non nulla ac, maximus convallis ex. Nam sodales
+                    metus
+                    nibh, et mattis ligula vulputate vel.
+                </p>
+                <p>
+                    Donec nec lectus lacus. Integer euismod tempor ligula, quis dapibus nibh. Nulla facilisi. Mauris
+                    sit
+                    amet egestas risus. Vivamus sed nibh a lacus imperdiet tincidunt nec rhoncus metus. Nulla
+                    iaculis
+                    fringilla eros sed bibendum. Fusce cursus ultricies vehicula. Vivamus turpis eros, malesuada at
+                    est
+                    in, sollicitudin commodo enim. Proin fermentum quam est, ac rhoncus dolor ultrices ac.
+                </p>
+            </div>
+            <br>
+            <div>
+                <br>
+                <header>
+                    <h1 class="myheader">Live update chart</h1>
+                </header>
+                <br>
+                <div style="width:50%; margin:auto;">
+                    <canvas id="canvas" height="450" width="600"></canvas>
+                </div>
+
+                <script>
+                    var getRandomDataArray = function () {
+                        var dataArray = [];
+                        for (var i = 0; i < 7; i++) dataArray.push(Math.round(Math.random() * 100));
+                        return dataArray;
+                    }
+
+                    var chartData = {
+                        labels: ["-6s ", "-5s ", "-4s ", "-3s ", "-2s ", "-1s ",
+                            "Now"
+                        ],
+                        datasets: [{
+                            label: "My Second dataset",
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: getRandomDataArray()
+                        }]
+                    }
+
+                    window.onload = function () {
+                        var chartOptions = {
+                            responsive: true
+                        };
+                        var chart = document.getElementById("canvas").getContext("2d");
+                        window.myBar = new Chart(chart).Line(chartData, chartOptions);
+                    }
+                </script>
+                <br>
+                <div>
+                    <h1 class="myheader">Image</h1>
+                    <ul class="ulimg">
+                        <li class="imgli">
+                            <img src="./img/image001.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image002.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image003.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image004.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image005.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image006.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image007.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image008.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image009.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image010.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image011.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image012.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image013.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image014.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image015.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image016.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image017.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image018.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image019.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image020.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image021.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image022.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image023.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image024.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image025.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image026.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image027.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image028.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image029.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image030.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image031.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image032.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image033.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image034.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image035.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image036.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image037.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image038.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image039.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image040.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image041.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image042.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image043.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image044.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image045.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image046.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image047.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image048.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image049.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image050.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image051.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image052.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image053.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image054.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image055.jpg" alt="Image 1 description" loading="lazy">
+                        </li>
+                        <li class="imgli">
+                            <img src="./img/image056.jpg" alt="Image 1 description" loading="lazy">
+                        </li class="imgli">
+                        <li></li>
+                    </ul>
+                </div>
+
+        </article>
+        <footer>
+            <p>Created: <time datetime="29.04.2021">29.04.2021</time></p>
+        </footer>
+    </div>
+</body>
+
+</html>

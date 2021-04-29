@@ -1,0 +1,195 @@
+body {
+    background-color: #000000;
+}
+
+footer {
+    text-align: center;
+    color: #006800;
+    text-transform: uppercase;
+    font-family: Consolas, monaco, monospace;
+    padding: 0em;
+    margin: 0;
+    border: 1px solid #006800;
+}
+
+.mynavigation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    border: 1px solid grey;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+}
+
+.mynavigation a {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    color: #006800;
+    border: 1px solid grey;
+    font-family: Consolas, monaco, monospace;
+    text-transform: uppercase;
+}
+
+.mynavigation a:hover {
+    background: #009900;
+    color: black;
+}
+
+.pagetitle {
+    color: #006800;
+    flex: 1;
+    width: auto;
+    margin: 0;
+    text-align: center;
+    font-family: Consolas, monaco, monospace;
+    height: auto;
+    display: block;
+    text-transform: uppercase;
+    font-size: xx-large;
+    padding: 0.2em;
+}
+
+.myheader {
+    text-align: center;
+    color: #006800;
+    text-transform: uppercase;
+    font-family: Consolas, monaco, monospace;
+    padding: 0em;
+    margin: 0;
+    border: 1px solid #006800;
+}
+
+.textcontent {
+    text-align: center;
+    font-family: Consolas, monaco, monospace;
+    color: #006800;
+    padding-top: 1em;
+    margin: 0;
+}
+
+.lipsum {
+    text-align: justify;
+    color: #006800;
+    padding-left: 10em;
+    padding-right: 10em;
+}
+
+.textarticle {
+    padding: 0;
+    margin: 0;
+}
+
+figcaption {
+    padding: 0em;
+    margin: 0em;
+    color: #006800;
+    font-family: Consolas, monaco, monospace;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+figure {
+
+    width: 10%;
+    height: auto;
+
+}
+
+
+
+
+.ulimg {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10em;
+    padding-right: 10em;
+}
+
+.imgli {
+    height: 40vh;
+    flex-grow: 1;
+}
+
+.imgli:last-child {
+    flex-grow: 10;
+}
+
+img {
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+
+.mychart {
+    margin: auto;
+}
+
+
+@media all and (max-width: 800px) {
+    .mynavigation {
+        justify-content: space-around;
+    }
+
+    .lipsum {
+        padding: 0;
+    }
+
+    .ulimg {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .mynavigation {
+        flex-flow: column wrap;
+        padding: 0;
+    }
+
+    .mynavigation a {
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .mynavigation li:last-of-type a {
+        border-bottom: none;
+    }
+}
+
+
+
+
+@media (max-aspect-ratio: 1/1) {
+    .imgli {
+        height: 30vh;
+    }
+}
+
+
+@media (max-height: 480px) {
+    .imgli {
+        height: 80vh;
+    }
+}
+
+
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+    .ulimg {
+        flex-direction: row;
+    }
+
+    .imgli {
+        height: auto;
+        width: 100%;
+    }
+
+    .ulimg {
+        width: 100%;
+        max-height: 75vh;
+        min-width: 0;
+    }
+}
